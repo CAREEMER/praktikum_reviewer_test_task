@@ -2,6 +2,7 @@ import datetime as dt
 
 
 class Record:
+    # typehints
     def __init__(self, amount, comment, date=''):
         self.amount = amount
         self.date = (
@@ -20,9 +21,15 @@ class Calculator:
         self.records.append(record)
 
     def get_today_stats(self):
+        # Возможное улучшение:
+        # return sum([record.amount for record in self.records if record.date == dt.datetime.now().date()])
         today_stats = 0
+
+        # Record затеняет название класса Record
         for Record in self.records:
             if Record.date == dt.datetime.now().date():
+
+                # today_stats += Record.amount
                 today_stats = today_stats + Record.amount
         return today_stats
 
